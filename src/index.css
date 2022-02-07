@@ -1,0 +1,25 @@
+html {
+  height: 100%;
+}
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+header {
+  /* background-color: #0093E9; */
+  background-image: linear-gradient(0deg, #0093E9 0%, #80D0C7 100%);
+
+  color: white;
+  padding: 2rem 0;
+}
+#title {
+  font-family: 'Supermercado One', cursive;
+  text-align: center;
+}
+
