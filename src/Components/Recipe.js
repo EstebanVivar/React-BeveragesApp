@@ -17,12 +17,14 @@ function getModalStyle() {
 const useStyles = makeStyles(theme => ({
     paper: {
         position: 'absolute',
-        width: 600,
+        width: 700,
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
-        scroll: { maxHeight: '500px', overflowY: 'scroll', overflowX: 'none' }
-    },
+        maxHeight: '95%',
+        overflowY: 'scroll',
+        overflowX: 'none'
+    }
 }));
 
 const Recipe = ({ recipe }) => {
@@ -34,13 +36,28 @@ const Recipe = ({ recipe }) => {
 
     const classes = useStyles()
 
-    const { Details, setIDRecipe } = useContext(ModalContext)
-    console.log(Details)
+    const { Details, setDetails, setIDRecipe } = useContext(ModalContext)
+
+
+    const getIngredients = (details) => {
+        let ingredients = [];
+        console.log(details)
+        for (let i = 1; i < 16; i++) {
+            if (details[`strIngredient${i}`]) {
+                ingredients.push(
+                    <li>{details[`strIngredient${i}`]} {details[`strMeasure${i}`]}</li>
+                )
+
+            }
+        }
+        return (ingredients);
+    }
+
     return (
         <div className='col-md-4 col-lg-4 my-2'>
             <div className='card'>
                 <h4 className='card-header bg-primary text-white' style={{ textAlign: 'center', fontWeight: 'bold' }}>{recipe.strDrink}</h4>
-                <img src={recipe.strDrinkThumb} alt={`Image of ${recipe.strDrink}`} />
+                <img src={recipe.strDrinkThumb} alt={`${recipe.strDrink}`} />
                 <div className='card-body'>
                     <button
                         type='button'
@@ -56,11 +73,22 @@ const Recipe = ({ recipe }) => {
                         open={Open}
                         onClose={() => {
                             setIDRecipe(null);
+                            setDetails({});
                             handleClose();
                         }}
                     >
                         <div style={ModalStyle} className={classes.paper}>
+                            <h2 style={{ textAlign: 'center', fontWeight: 'bold' }}>{Details.strDrink}</h2>
+                            <h3 className='mt-3'>Instructions</h3>
+                            <p>
+                                {Details.strInstructions}
+                            </p>
+                            <h3 className='mt-3'>Ingredients and measures</h3>
+                            <ul>
+                                {getIngredients(Details)}
+                            </ul>
 
+                            <img src={Details.strDrinkThumb} className='img-fluid my-4' alt={`${Details.strDrink}`} />
                         </div>
                     </Modal>
                 </div>

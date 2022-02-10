@@ -13,8 +13,7 @@ const ModalProvider = (props) => {
             if (!IDRecipe) return;
             const URL = `https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${IDRecipe}`;
             const DetailList = await axios.get(URL);
-            console.log(DetailList.data)
-            // setDetails(DetailList.data.drinks[0]);
+            setDetails(DetailList.data.drinks[0]);
         }
         getRecipe();
 
@@ -24,6 +23,7 @@ const ModalProvider = (props) => {
         <ModalContext.Provider
             value={{
                 Details,
+                setDetails,
                 setIDRecipe
             }}
         >
