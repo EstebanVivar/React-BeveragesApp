@@ -17,7 +17,7 @@ function getModalStyle() {
 const useStyles = makeStyles(theme => ({
     paper: {
         position: 'absolute',
-        width: 700,
+        width: 600,
         backgroundColor: theme.palette.background.paper,
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
@@ -41,7 +41,6 @@ const Recipe = ({ recipe }) => {
 
     const getIngredients = (details) => {
         let ingredients = [];
-        console.log(details)
         for (let i = 1; i < 16; i++) {
             if (details[`strIngredient${i}`]) {
                 ingredients.push(
@@ -54,14 +53,14 @@ const Recipe = ({ recipe }) => {
     }
 
     return (
-        <div className='col-md-4 col-lg-4 my-2'>
+        <div className='col-md-4 col-sm-4 my-2'>
             <div className='card'>
-                <h4 className='card-header bg-primary text-white' style={{ textAlign: 'center', fontWeight: 'bold' }}>{recipe.strDrink}</h4>
+                <h4 className='card-header bg-primary text-white' id='title' style={{ textAlign: 'center', fontWeight: 'bold' }}>{recipe.strDrink}</h4>
                 <img src={recipe.strDrinkThumb} alt={`${recipe.strDrink}`} />
                 <div className='card-body'>
                     <button
                         type='button'
-                        className='btn btn-block btn-lg btn-primary'
+                        className='btn btn-block btn-lg btn-primary' id='title'
                         onClick={() => {
                             setIDRecipe(recipe.idDrink);
                             handleOpen();
@@ -78,12 +77,12 @@ const Recipe = ({ recipe }) => {
                         }}
                     >
                         <div style={ModalStyle} className={classes.paper}>
-                            <h2 style={{ textAlign: 'center', fontWeight: 'bold' }}>{Details.strDrink}</h2>
-                            <h3 className='mt-3'>Instructions</h3>
-                            <p>
+                            <h2 id='title' style={{ textAlign: 'center', fontWeight: 'bold' }}>{Details.strDrink}</h2>
+                            <h3 className='mt-3' id='title-modal'>Instructions</h3>
+                            <p >
                                 {Details.strInstructions}
                             </p>
-                            <h3 className='mt-3'>Ingredients and measures</h3>
+                            <h3 className='mt-3' id='title-modal'>Ingredients and measures</h3>
                             <ul>
                                 {getIngredients(Details)}
                             </ul>

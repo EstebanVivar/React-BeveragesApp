@@ -6,7 +6,7 @@ const Form = () => {
 
     const { Categories } = useContext(CategoryContext);
 
-    const { setIngredient,setQuery } = useContext(RecipesContext);
+    const { setIngredient, setQuery } = useContext(RecipesContext);
 
     const [Search, setSearch] = useState({
         name: '',
@@ -29,13 +29,14 @@ const Form = () => {
             }}>
 
             <fieldset className='text-center'>
-                <legend>Search beverages by category or ingredients</legend>
+                <legend id='title'>Search beverages by category or ingredients</legend>
             </fieldset>
 
             <div className='row'>
 
                 <div className='col-md-4 my-2 p-2'>
                     <input
+                        id='title-modal'
                         name='name'
                         className='form-control'
                         type={'text'}
@@ -46,6 +47,7 @@ const Form = () => {
 
                 <div className='col-md-4 my-2 p-2'>
                     <select
+                        id='title-modal'
                         className='form-control'
                         name='category'
                         onChange={getForm}
@@ -67,6 +69,7 @@ const Form = () => {
 
                 <div className='col-md-4 my-2 p-2'>
                     <input
+                        id='title'
                         className='btn btn-block btn-primary'
                         type={'submit'}
                         value='Search'

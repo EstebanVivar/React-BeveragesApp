@@ -6,7 +6,7 @@ import { RecipesContext } from '../Context/RecipesContext';
 const RecipesList = () => {
     const { Recipes } = useContext(RecipesContext)
     return (
-        <div className='row mt-5'>
+        <div className='row mt-5 '>
             {Recipes.map(recipe => (
                 <Recipe
                     key={recipe.idDrink}

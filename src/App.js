@@ -12,7 +12,7 @@ function App() {
          <RecipesProvider>
             <ModalProvider>
                <Header />
-               <div className="container mt-5">
+               <div className=" m-5 p-5">
                   <div className="row">
                      <Form />
                      <RecipesList />
